@@ -251,7 +251,7 @@ const ServicesPage: React.FC = () => {
                 </div>
               ) : (
                 <div className="text-center py-12">
-                  <p className="text-lg text-gray-600">No services found matching "{searchQuery}"</p>
+                  <p className="text-lg text-gray-600">No services found matching &quot;{searchQuery}&quot;</p>
                 </div>
               )}
           </div>

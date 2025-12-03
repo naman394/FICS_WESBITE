@@ -45,7 +45,7 @@ const Contact: React.FC = () => {
                 Get in touch with us.
               </h1>
               <p className="text-base md:text-lg text-gray-300 leading-relaxed">
-                Whether you're curious about features, pricing, or what FICS could unlock for your team, we're here to help. Tell us what you're working on—we'll take it from there.
+                Whether you&apos;re curious about features, pricing, or what FICS could unlock for your team, we&apos;re here to help. Tell us what you&apos;re working on—we&apos;ll take it from there.
               </p>
             </div>
 
@@ -126,7 +126,7 @@ const Contact: React.FC = () => {
           {/* Right Column - Contact Form */}
           <div>
             <p className="text-base md:text-lg text-gray-300 mb-6 md:mb-8 leading-relaxed">
-              Got a question? Looking for a tailored demo? Fill out the form and we'll be in touch shortly—usually within one business day.
+              Got a question? Looking for a tailored demo? Fill out the form and we&apos;ll be in touch shortly—usually within one business day.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">

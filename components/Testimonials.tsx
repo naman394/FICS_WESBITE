@@ -124,7 +124,7 @@ const Testimonials: React.FC = () => {
                           overflowWrap: 'break-word' 
                         }}
                       >
-                        "{testimonial.quote}"
+                        &quot;{testimonial.quote}&quot;
                       </blockquote>
                       <div className="mt-auto pt-1">
                         <p 
