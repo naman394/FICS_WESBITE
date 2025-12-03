@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { Star, Award, Users, Shield } from 'lucide-react';
 
 interface AnimatedCounterProps {
@@ -250,9 +251,9 @@ const Stats: React.FC = () => {
         </div>
 
         <div className="text-center mb-10 md:mb-12 max-w-3xl mx-auto">
-          <button className="px-8 py-3 bg-white text-black rounded-lg font-semibold text-sm hover:bg-gray-200 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+          <Link href="/contact" className="inline-block px-8 py-3 bg-white text-black rounded-lg font-semibold text-sm hover:bg-gray-200 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
             Get started now
-          </button>
+          </Link>
         </div>
 
         <div className="relative">

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Testimonials: React.FC = () => {
@@ -166,9 +167,9 @@ const Testimonials: React.FC = () => {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-8 pt-4 md:pt-8 border-t border-gray-300">
           {/* Left - Call to Action */}
           <div className="flex-1">
-            <button className="px-5 py-2.5 md:px-6 md:py-3 bg-gray-800 text-white rounded-lg text-sm md:text-base font-medium hover:bg-gray-900 transition-colors">
+            <Link href="/contact" className="inline-block px-5 py-2.5 md:px-6 md:py-3 bg-gray-800 text-white rounded-lg text-sm md:text-base font-medium hover:bg-gray-900 transition-colors">
               Contact our team
-            </button>
+            </Link>
           </div>
 
           {/* Right - Navigation Arrows */}
