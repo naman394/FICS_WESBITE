@@ -1,6 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Hero: React.FC = () => {
   const subLabel = 'Forensic Services India';
@@ -9,13 +11,13 @@ const Hero: React.FC = () => {
   const headlineLine3 = 'and Consultancy Services';
 
   // Image banner data
-  const imageUrls = [
+  const imageUrls = useMemo(() => [
     "/images/image1.png",
     "/images/image2.png",
     "/images/image3.png",
     "/images/image4.png",
     "/images/image5.png"
-  ];
+  ], []);
 
   const bannerCards = [
     { type: 'image', src: imageUrls[0], alt: 'Image 1' },
@@ -25,6 +27,30 @@ const Hero: React.FC = () => {
     { type: 'image', src: imageUrls[3], alt: 'Image 4' },
   ];
   const allBannerCards = [...bannerCards, ...bannerCards];
+
+  // Preload critical images for faster loading
+  useEffect(() => {
+    const preloadImages = imageUrls.slice(0, 3); // Preload first 3 images
+    const links: HTMLLinkElement[] = [];
+    
+    preloadImages.forEach((src) => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = src;
+      document.head.appendChild(link);
+      links.push(link);
+    });
+
+    return () => {
+      // Cleanup preload links
+      links.forEach((link) => {
+        if (link.parentNode) {
+          link.parentNode.removeChild(link);
+        }
+      });
+    };
+  }, [imageUrls]);
 
   return (
     <section className="relative z-10 w-full min-h-screen bg-black flex items-center pb-12 md:pb-0">
@@ -50,12 +76,12 @@ const Hero: React.FC = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4 w-full sm:w-auto mb-8 md:mb-12">
-              <button className="w-full sm:w-auto px-7 py-3 bg-white text-black text-[15px] font-medium rounded-lg hover:bg-gray-200 transition-transform active:scale-95 shadow-sm">
+              <Link href="/contact" className="w-full sm:w-auto px-7 py-3 bg-white text-black text-[15px] font-medium rounded-lg hover:bg-gray-200 transition-transform active:scale-95 shadow-sm text-center">
                 Get started now
-              </button>
-              <button className="w-full sm:w-auto px-7 py-3 bg-transparent border-2 border-white text-white text-[15px] font-medium rounded-lg hover:bg-white/10 transition-transform active:scale-95">
+              </Link>
+              <Link href="/services" className="w-full sm:w-auto px-7 py-3 bg-transparent border-2 border-white text-white text-[15px] font-medium rounded-lg hover:bg-white/10 transition-transform active:scale-95 text-center">
                 Explore more
-              </button>
+              </Link>
             </div>
 
             {/* Image Animation Banner */}
@@ -73,11 +99,14 @@ const Hero: React.FC = () => {
                       key={`banner-1-${index}`}
                       className="relative w-[150px] h-[90px] sm:w-[180px] sm:h-[110px] rounded-lg overflow-hidden flex-shrink-0 transition-transform duration-300 hover:scale-[1.02] bg-gray-900 shadow-lg"
                     >
-                      <img 
+                      <Image 
                         src={card.src} 
                         alt={card.alt} 
-                        className="w-full h-full object-cover"
-                        loading="lazy"
+                        fill
+                        className="object-cover"
+                        loading={index < 5 ? "eager" : "lazy"}
+                        priority={index < 3}
+                        sizes="(max-width: 640px) 150px, 180px"
                       />
                     </div>
                   ))}
@@ -88,11 +117,13 @@ const Hero: React.FC = () => {
                       key={`banner-2-${index}`}
                       className="relative w-[150px] h-[90px] sm:w-[180px] sm:h-[110px] rounded-lg overflow-hidden flex-shrink-0 transition-transform duration-300 hover:scale-[1.02] bg-gray-900 shadow-lg"
                     >
-                      <img 
+                      <Image 
                         src={card.src} 
                         alt={card.alt} 
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
                         loading="lazy"
+                        sizes="(max-width: 640px) 150px, 180px"
                       />
                     </div>
                   ))}
@@ -104,10 +135,13 @@ const Hero: React.FC = () => {
           {/* Right Column - Image */}
           <div className="relative w-full flex items-center justify-start">
             <div className="relative w-full max-w-lg lg:max-w-xl h-auto aspect-square overflow-hidden rounded-lg ml-4 lg:ml-8">
-              <img 
+              <Image 
                 src="https://images.unsplash.com/photo-1706359563992-9823e4a6f712?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Forensic Services"
-                className="w-full h-full object-cover object-center"
+                fill
+                className="object-cover object-center"
+                priority
+                sizes="(max-width: 1024px) 100vw, 512px"
               />
             </div>
           </div>
