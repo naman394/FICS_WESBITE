@@ -156,12 +156,22 @@ const VideoSection: React.FC = () => {
           <div className="relative w-full aspect-video rounded-lg overflow-hidden group shadow-lg bg-black">
             {!isPlaying ? (
               <>
-                {/* Thumbnail Image */}
-                <img
-                  src={activeContent.thumbnail}
-                  alt={activeContent.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+                {/* Thumbnail: Video First Frame (Local) or Image (Remote) */}
+                {activeContent.videoId.startsWith('/') ? (
+                  <video
+                    src={`${activeContent.videoId}#t=0.1`}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    preload="metadata"
+                    muted
+                    playsInline
+                  />
+                ) : (
+                  <img
+                    src={activeContent.thumbnail}
+                    alt={activeContent.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                )}
 
                 {/* Overlay Gradient */}
                 <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/20 transition-colors duration-300"></div>
