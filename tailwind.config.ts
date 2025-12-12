@@ -11,10 +11,19 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        cream: "#F8F4E8",
-        dark: "#1A1A1A",
-        charcoal: "#2D2D2A",
-        sand: "#E8E6DF",
+        slate: {
+          50: '#F8FAFC',
+          100: '#F1F5F9',
+          200: '#E2E8F0',
+          800: '#1E293B',
+          900: '#0F172A',
+        },
+        gold: {
+          DEFAULT: '#C5A059',
+          light: '#E8DCC2',
+          dark: '#9F803E',
+        },
+        "border-light": "var(--border-light)",
       },
       fontFamily: {
         display: ['var(--font-display)', 'serif'],

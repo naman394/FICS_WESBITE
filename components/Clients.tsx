@@ -19,14 +19,14 @@ const Clients: React.FC = () => {
   const allLogos = [...clientLogos, ...clientLogos];
 
   return (
-    <section className="w-full bg-black pt-8 md:pt-0 pb-20 md:pb-24 px-0 overflow-hidden">
+    <section className="w-full bg-white pt-16 md:pt-24 pb-8 md:pb-12 px-0 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         {/* Header */}
         <div className="text-center mb-10 md:mb-12">
-          <h3 className="text-[11px] font-bold tracking-[0.2em] uppercase text-gray-400 mb-4">
+          <h3 className="text-[11px] font-bold tracking-[0.2em] uppercase text-slate-500 mb-4">
             Trusted Partners
           </h3>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-normal text-white">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-normal text-slate-900">
             Companies who rely on our expertise
           </h2>
         </div>
@@ -34,11 +34,11 @@ const Clients: React.FC = () => {
 
       {/* Scrolling Logos */}
       <div className="relative w-full overflow-hidden pt-4 md:pt-6">
-        {/* Left Gradient Overlay */}
-        <div className="absolute inset-y-0 left-0 w-32 md:w-48 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
-        
-        {/* Right Gradient Overlay */}
-        <div className="absolute inset-y-0 right-0 w-32 md:w-48 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
+        {/* Left Gradient Overlay - White */}
+        <div className="absolute inset-y-0 left-0 w-32 md:w-48 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+
+        {/* Right Gradient Overlay - White */}
+        <div className="absolute inset-y-0 right-0 w-32 md:w-48 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
         {/* Scrolling Container */}
         <div className="flex w-full">

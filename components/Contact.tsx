@@ -35,7 +35,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section className="w-full bg-black min-h-screen py-12 md:py-20 px-6 md:px-12 lg:px-16">
+    <section className="w-full bg-[#2C2520] min-h-screen py-12 md:py-20 px-6 md:px-12 lg:px-16">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 lg:gap-20">
           {/* Left Column - Contact Information */}

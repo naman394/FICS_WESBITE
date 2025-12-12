@@ -15,7 +15,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 1,
     title: '7 Types of Intellectual Property Rights (IPR) Explained with Real-Life Examples',
-    description: 'In today\'s fast-paced, innovation-driven world, ideas are just as valuable as physical assets. Whether it\'s a brand name, a unique product design, or a p ...',
+    description: 'In today\'s fast-paced, innovation-driven world, ideas are just as valuable as physical assets. Whether it\'s a brand name, a unique product design, or a proprietary technology, intellectual property (IP) represents significant value. Understanding the nuancess of Patents, Trademarks, Copyrights, and Trade Secrets is crucial for any business owner. In this comprehensive guide, we explore real-world examples to demystify legal protections.',
     fullContent: `In today's fast-paced, innovation-driven world, ideas are just as valuable as physical assets. Whether it's a brand name, a unique product design, or a proprietary technology, intellectual property (IP) represents significant value for businesses and individuals alike.
 
 Understanding the different types of Intellectual Property Rights (IPR) is crucial for protecting your innovations and creative works. In this comprehensive guide, we'll explore the seven main types of IPR with real-life examples to help you understand how they apply in practice.
@@ -72,7 +72,7 @@ Protecting your intellectual property is essential for:
 - Preventing unauthorized use
 
 At FICS, we provide comprehensive IPR investigation services to help you protect your intellectual property rights and address infringement issues effectively.`,
-    image: '/images/image1.png',
+    image: 'https://images.unsplash.com/photo-1620325867502-221cfb5faa5f?auto=format&fit=crop&w=800&q=80',
     date: 'AUGUST 07, 2025',
     category: 'IPR INVESTIGATION',
     categoryColor: 'bg-blue-500',
@@ -122,7 +122,7 @@ Digital forensics is used in various scenarios, including:
 - Civil litigation support
 
 At FICS, our digital forensics experts utilize cutting-edge tools and methodologies to help you uncover critical evidence and protect your digital assets.`,
-    image: '/images/image3.png',
+    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80',
     date: 'JULY 15, 2025',
     category: 'DIGITAL FORENSIC',
     categoryColor: 'bg-green-500',
@@ -173,7 +173,7 @@ Effective digital forensics requires:
 - Collaboration with legal teams
 
 At FICS, we combine advanced digital forensics capabilities with cybersecurity expertise to help organizations protect their assets and investigate security incidents effectively.`,
-    image: '/images/image3.png',
+    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80',
     date: 'MAY 30, 2025',
     category: 'DIGITAL FORENSIC',
     categoryColor: 'bg-green-500',
@@ -231,7 +231,7 @@ Background verification helps:
 4. **Reporting:** Providing comprehensive reports with findings
 
 At FICS, we offer comprehensive background verification services to help you make informed decisions and mitigate risks in recruitment, partnerships, and business relationships.`,
-    image: '/images/image4.png',
+    image: 'https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&w=800&q=80',
     date: 'MAY 13, 2025',
     category: 'BACKGROUND VERIFICATION',
     categoryColor: 'bg-purple-500',
@@ -298,7 +298,7 @@ Effective CDD includes:
 - Enhanced customer relationships
 
 At FICS, we help banks implement robust CDD processes that meet regulatory requirements while maintaining efficient customer onboarding and relationship management.`,
-    image: '/images/image5.png',
+    image: 'https://images.unsplash.com/photo-1601597111158-2fceff2926d9?auto=format&fit=crop&w=800&q=80',
     date: 'APRIL 29, 2025',
     category: 'ENHANCED DUE DILIGENCE',
     categoryColor: 'bg-orange-500',
@@ -367,7 +367,7 @@ Skip tracing must be conducted:
 - Insurance investigations
 
 At FICS, our skip tracing services combine advanced investigative techniques with legal compliance to help you locate individuals efficiently and ethically.`,
-    image: '/images/image1.png',
+    image: 'https://images.unsplash.com/photo-1599658880436-c61792e70672?auto=format&fit=crop&w=800&q=80',
     date: 'FEBRUARY 10, 2025',
     category: 'SKIP TRACING',
     categoryColor: 'bg-red-500',
@@ -439,7 +439,7 @@ Depending on the type of cybercrime:
 - Monitor financial accounts regularly
 
 At FICS, we provide comprehensive cybercrime investigation services to help victims understand their rights, gather evidence, and navigate the complaint process effectively.`,
-    image: '/images/image2.png',
+    image: 'https://images.unsplash.com/photo-1512314889357-e157c22f938d?auto=format&fit=crop&w=800&q=80',
     date: 'JANUARY 15, 2025',
     category: 'CYBER CRIME',
     categoryColor: 'bg-cyan-500',
@@ -511,7 +511,7 @@ Data recovery is the process of retrieving inaccessible, lost, corrupted, or for
 - Maintain regular backups
 
 At FICS, our data recovery experts use both advanced tools and manual techniques to maximize recovery success rates, ensuring your valuable data is retrieved safely and efficiently.`,
-    image: '/images/image3.png',
+    image: 'https://images.unsplash.com/photo-1531297461136-82lw8u2211q?auto=format&fit=crop&w=800&q=80',
     date: 'DECEMBER 13, 2024',
     category: 'DATA RECOVERY',
     categoryColor: 'bg-indigo-500',
@@ -590,7 +590,7 @@ Banks must comply with:
 - Enhanced security
 
 At FICS, we help banks implement comprehensive due diligence processes that meet regulatory requirements while maintaining operational efficiency and customer satisfaction.`,
-    image: '/images/image5.png',
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80',
     date: 'DECEMBER 02, 2024',
     category: 'DUE DILIGENCE',
     categoryColor: 'bg-yellow-500',
@@ -667,7 +667,7 @@ Recovered data is verified for integrity and completeness before being returned 
 - Use surge protectors
 
 At FICS, our data recovery experts use advanced techniques and state-of-the-art equipment to maximize recovery success rates, helping you retrieve your valuable data safely and efficiently.`,
-    image: '/images/image3.png',
+    image: 'https://images.unsplash.com/photo-1558494949-ef2a27883bb5?auto=format&fit=crop&w=800&q=80',
     date: 'NOVEMBER 26, 2024',
     category: 'DATA RECOVERY',
     categoryColor: 'bg-indigo-500',
@@ -738,7 +738,7 @@ Protecting data and applications hosted in cloud environments through proper con
 - Regular backups
 
 At FICS, we provide comprehensive cybersecurity services to help organizations protect their digital assets and maintain robust security postures in an increasingly connected world.`,
-    image: '/images/image2.png',
+    image: 'https://images.unsplash.com/photo-1496664444929-8c75efb9546f?auto=format&fit=crop&w=800&q=80',
     date: 'SEPTEMBER 27, 2024',
     category: 'CYBER SECURITY',
     categoryColor: 'bg-teal-500',
@@ -1081,4 +1081,8 @@ export const getRelatedBlogs = (currentBlogId: number, limit: number = 3): BlogP
     .filter(blog => blog.id !== currentBlogId)
     .slice(0, limit);
 };
+
+
+
+
 

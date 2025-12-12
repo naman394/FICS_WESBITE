@@ -13,7 +13,7 @@ const Testimonials: React.FC = () => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768); // md breakpoint
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
@@ -49,25 +49,25 @@ const Testimonials: React.FC = () => {
   };
 
   return (
-    <section 
+    <section
       className="w-full px-4 pt-8 pb-6 md:px-12 lg:px-16 md:pt-20 md:pb-12 rounded-t-3xl md:rounded-t-[3rem] rounded-b-3xl md:rounded-b-[3rem] -mt-4 md:-mt-12 relative z-10"
       style={{
-        backgroundColor: '#F1EADE',
+        backgroundColor: '#2C2520', // Deep Espresso Brown to match Services
       }}
     >
       <div className="max-w-7xl mx-auto">
         {/* Header Section - Center Aligned on Mobile, Left Aligned on Desktop */}
         <div className="mb-6 md:mb-16 text-center md:text-left">
-          <h4 className="text-[11px] font-bold tracking-[0.2em] uppercase text-gray-600 mb-2 md:mb-4">
+          <h4 className="text-[11px] font-bold tracking-[0.2em] uppercase text-white/60 mb-2 md:mb-4">
             WHY THEY CHOSE FICS
           </h4>
-          <h2 
+          <h2
             className="text-2xl md:text-5xl lg:text-6xl"
             style={{
               fontFamily: '"Libre Caslon Text", "Times New Roman", serif',
               fontStyle: 'normal',
               fontWeight: 400,
-              color: 'rgb(47, 44, 37)',
+              color: '#FFFFFF', // White
               lineHeight: 'clamp(28px, 5vw, 40px)',
               letterSpacing: '-0.02em',
             }}
@@ -79,10 +79,10 @@ const Testimonials: React.FC = () => {
         {/* Testimonials Carousel - Shows exactly 2 testimonials */}
         <div className="relative mb-6 md:mb-16 md:-mx-12 lg:-mx-16">
           <div className="overflow-hidden w-full">
-            <div 
+            <div
               className="flex transition-transform duration-500 ease-in-out"
               style={{
-                transform: isMobile 
+                transform: isMobile
                   ? `translateX(-${currentIndex * 100}%)`
                   : `translateX(calc(-${currentIndex} * 43.5%))`,
                 gap: '0px',
@@ -91,7 +91,7 @@ const Testimonials: React.FC = () => {
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className={isMobile 
+                  className={isMobile
                     ? "min-w-full max-w-full flex-shrink-0 px-2"
                     : "min-w-[43.5%] max-w-[43.5%] flex-shrink-0 pl-6 md:pl-12 lg:pl-16 pr-0"
                   }
@@ -106,48 +106,48 @@ const Testimonials: React.FC = () => {
                         style={{ objectPosition: 'center 25%' }}
                       />
                     </div>
-                    
+
                     {/* Content */}
-                    <div 
+                    <div
                       className={`flex flex-col flex-1 min-w-0 md:max-h-[240px] ${isMobile ? 'p-3 pb-4 rounded-b-lg' : ''}`}
-                      style={isMobile ? { backgroundColor: '#FFFDF9' } : {}}
+                      style={isMobile ? { backgroundColor: '#3E342E' } : {}}
                     >
-                      <blockquote 
-                        className="font-normal mb-3 md:mb-6 tracking-wide whitespace-pre-line flex-grow" 
-                        style={{ 
+                      <blockquote
+                        className="font-normal mb-3 md:mb-6 tracking-wide whitespace-pre-line flex-grow"
+                        style={{
                           fontFamily: '"BDO Grotesk", Arial, sans-serif',
                           fontStyle: 'normal',
                           fontWeight: 400,
-                          color: 'rgb(47, 44, 37)',
+                          color: '#E5E7EB', // Gray-200
                           fontSize: '14px',
                           lineHeight: '20px',
-                          wordBreak: 'break-word', 
-                          overflowWrap: 'break-word' 
+                          wordBreak: 'break-word',
+                          overflowWrap: 'break-word'
                         }}
                       >
                         &quot;{testimonial.quote}&quot;
                       </blockquote>
                       <div className="mt-auto pt-1">
-                        <p 
+                        <p
                           style={{
                             fontFamily: '"BDO Grotesk", Arial, sans-serif',
                             fontStyle: 'normal',
                             fontWeight: 700,
                             fontSize: '14px',
-                            color: 'rgb(47, 44, 37)',
+                            color: '#FFFFFF', // White
                           }}
                           className="mb-0.5"
                         >
                           {testimonial.name}
                         </p>
                         {testimonial.title && (
-                          <p 
+                          <p
                             style={{
                               fontFamily: '"BDO Grotesk", Arial, sans-serif',
                               fontStyle: 'normal',
                               fontWeight: 400,
                               fontSize: '12px',
-                              color: 'rgb(47, 44, 37)',
+                              color: '#64748B', // Slate-500
                             }}
                             className="opacity-70"
                           >
@@ -164,10 +164,10 @@ const Testimonials: React.FC = () => {
         </div>
 
         {/* Bottom Section - CTA and Navigation */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-8 pt-4 md:pt-8 border-t border-gray-300">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-8 pt-4 md:pt-8 border-t border-slate-200">
           {/* Left - Call to Action */}
           <div className="flex-1">
-            <Link href="/contact" className="inline-block px-5 py-2.5 md:px-6 md:py-3 bg-gray-800 text-white rounded-lg text-sm md:text-base font-medium hover:bg-gray-900 transition-colors">
+            <Link href="/contact" className="inline-block px-5 py-2.5 md:px-6 md:py-3 bg-slate-900 text-white rounded-lg text-sm md:text-base font-medium hover:bg-slate-800 transition-colors">
               Contact our team
             </Link>
           </div>

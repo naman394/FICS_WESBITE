@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-black text-white font-sans selection:bg-white selection:text-black">
+    <div className="min-h-screen bg-[#2C2520] text-white font-sans selection:bg-white selection:text-black">
       <Navbar />
       <main>
         <Contact />

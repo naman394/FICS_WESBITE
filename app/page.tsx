@@ -10,6 +10,9 @@ import Stats from '@/components/Stats';
 // import FeatureScroll from '@/components/FeatureScroll';
 import Testimonials from '@/components/Testimonials';
 import Footer from '@/components/Footer';
+import VideoSection from '@/components/VideoSection';
+import BlogSection from '@/components/BlogSection';
+import PodcastSection from '@/components/PodcastSection';
 
 function HomeContent() {
   const { bgColor } = useScroll();
@@ -19,19 +22,23 @@ function HomeContent() {
   };
 
   return (
-    <div 
-      className="min-h-screen bg-black text-white font-sans selection:bg-white selection:text-black"
+    <div
+      className="min-h-screen bg-white text-slate-900 font-sans selection:bg-gold selection:text-white"
     >
       <Navbar />
       <main>
         <Hero />
-        <Clients />
         <Services />
+        <Clients />
+        <PodcastSection />
+        <div className="w-full max-w-7xl mx-auto border-t-2 border-dotted border-slate-200 my-0"></div>
+        <VideoSection />
         <Stats />
-        {/* Black Background Spacer */}
-        <div className="w-full bg-black h-16 md:h-24"></div>
+        {/* White Spacer */}
+        <div className="w-full bg-white h-16 md:h-24"></div>
         {/* <FeatureScroll /> */}
         <Testimonials />
+        <BlogSection />
       </main>
       <Footer />
     </div>
