@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Play, Pause, SkipBack, SkipForward, Volume2, Clock, Calendar, Mic, Headphones } from 'lucide-react';
+import { Play, Pause, SkipBack, SkipForward, Volume2, Clock, Calendar, Mic, Headphones, AlertCircle } from 'lucide-react';
+import Image from 'next/image';
 
 // Mock Data for Podcasts
 const podcasts = [
@@ -9,10 +10,10 @@ const podcasts = [
     id: 0,
     title: "DPDP Act (Hindi) Overview",
     date: "Dec 13, 2024",
-    duration: "10:00", // Estimating based on file size ~14MB (could be longer/shorter depending on bitrate, usually 1MB/min for 128kbps, so ~14 mins)
+    duration: "10:00",
     host: "FICS Team",
     description: "A comprehensive breakdown of the Digital Personal Data Protection Act (DPDP) in Hindi, explaining key provisions and compliance requirements.",
-    image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=800&q=80",
+    image: "/assets/images/podcasts/podcast-1-dpdp.jpg",
     audioUrl: "/audios/DPDT_ACT_HINDI_1.mp3"
   },
   {
@@ -22,8 +23,8 @@ const podcasts = [
     duration: "14:20",
     host: "Dr. Sarah Mitchell",
     description: "Exploring how AI is reshaping the landscape of cyber investigations and evidence analysis.",
-    image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&w=800&q=80",
-    audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" // Sample Audio
+    image: "/assets/images/podcasts/podcast-2-future.jpg",
+    audioUrl: "" // Restricted
   },
   {
     id: 2,
@@ -32,8 +33,8 @@ const podcasts = [
     duration: "18:45",
     host: "James Carter",
     description: "A deep dive into the red flags of corporate embezzlement and how forensic accountants track the money.",
-    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80",
-    audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+    image: "/assets/images/podcasts/podcast-3-fraud.jpg",
+    audioUrl: "" // Restricted
   },
   {
     id: 3,
@@ -42,8 +43,8 @@ const podcasts = [
     duration: "12:10",
     host: "Emily Chen",
     description: "Discussing the vulnerabilities of remote workforces and strategies to secure distributed networks.",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80",
-    audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+    image: "/assets/images/podcasts/podcast-4-remote.jpg",
+    audioUrl: "" // Restricted
   },
   {
     id: 4,
@@ -52,8 +53,8 @@ const podcasts = [
     duration: "16:30",
     host: "Michael Ross",
     description: "Legal experts share insights on protecting intellectual property rights in global markets.",
-    image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=800&q=80",
-    audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
+    image: "/assets/images/podcasts/podcast-5-ipr.jpg",
+    audioUrl: "" // Restricted
   }
 ];
 
@@ -65,6 +66,7 @@ const PodcastSection: React.FC = () => {
   const [duration, setDuration] = useState("00:00");
   const [showAll, setShowAll] = useState(false);
   const [showMobilePlaylist, setShowMobilePlaylist] = useState(false);
+  const [comingSoonAlert, setComingSoonAlert] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const currentTrack = podcasts[currentTrackIndex];
@@ -80,6 +82,11 @@ const PodcastSection: React.FC = () => {
   }, [isPlaying, currentTrackIndex]);
 
   const togglePlay = () => {
+    if (currentTrack.id !== 0) {
+      setComingSoonAlert(true);
+      setTimeout(() => setComingSoonAlert(false), 3000);
+      return;
+    }
     setIsPlaying(!isPlaying);
   };
 
@@ -97,8 +104,13 @@ const PodcastSection: React.FC = () => {
 
   const handleTrackChange = (index: number) => {
     setCurrentTrackIndex(index);
-    // Reset play state only if we want to auto-play (optional)
-    setIsPlaying(true);
+    if (podcasts[index].id === 0) {
+      setIsPlaying(true);
+    } else {
+      setIsPlaying(false);
+      setComingSoonAlert(true);
+      setTimeout(() => setComingSoonAlert(false), 3000);
+    }
   };
 
   const formatTime = (time: number) => {
@@ -110,7 +122,7 @@ const PodcastSection: React.FC = () => {
 
   const handleProgressBarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(e.target.value);
-    if (audioRef.current) {
+    if (audioRef.current && currentTrack.id === 0) {
       const time = (value / 100) * audioRef.current.duration;
       audioRef.current.currentTime = time;
       setProgress(value);
@@ -142,14 +154,25 @@ const PodcastSection: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-10 items-start">
           {/* Main Player Area (Left) */}
-          <div className="lg:col-span-7 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-8 shadow-2xl">
+          <div className="lg:col-span-7 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-8 shadow-2xl relative">
+            {/* Alert Overlay */}
+            {comingSoonAlert && (
+              <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 animate-fadeIn">
+                <div className="bg-gold text-black px-4 py-2 rounded-full font-bold shadow-lg flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4" />
+                  <span>Coming Soon!</span>
+                </div>
+              </div>
+            )}
+
             <div className="flex flex-col sm:flex-row md:flex-row gap-5 md:gap-8 items-center md:items-start">
               {/* Album Art */}
               <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 aspect-square rounded-xl overflow-hidden shadow-lg relative group flex-shrink-0">
-                <img
+                <Image
                   src={currentTrack.image}
                   alt={currentTrack.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
                 {/* Playing Indicator Overlay */}
@@ -184,7 +207,7 @@ const PodcastSection: React.FC = () => {
                       className="absolute top-0 left-0 h-full bg-gradient-to-r from-gold to-yellow-600 rounded-full"
                       style={{ width: `${progress}%` }}
                     >
-                      <div className="absolute right-[-4px] top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                      <div className={`absolute right-[-4px] top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-md transition-opacity ${currentTrack.id === 0 ? 'opacity-0 group-hover:opacity-100' : 'hidden'}`}></div>
                     </div>
                     <input
                       type="range"
@@ -192,7 +215,8 @@ const PodcastSection: React.FC = () => {
                       max="100"
                       value={progress}
                       onChange={handleProgressBarChange}
-                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                      disabled={currentTrack.id !== 0}
+                      className={`absolute inset-0 w-full h-full opacity-0 ${currentTrack.id === 0 ? 'cursor-pointer' : 'cursor-not-allowed'}`}
                     />
                   </div>
                 </div>
@@ -264,7 +288,7 @@ const PodcastSection: React.FC = () => {
                   className="flex gap-4 p-3 rounded-lg cursor-pointer transition-all duration-300 hover:bg-white/5 border border-transparent hover:border-white/5 group"
                 >
                   <div className="relative w-16 h-16 flex-shrink-0 rounded-md overflow-hidden">
-                    <img src={podcast.image} alt={podcast.title} className="w-full h-full object-cover" />
+                    <Image src={podcast.image} alt={podcast.title} fill className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
                       <Play className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-opacity fill-current" />
                     </div>

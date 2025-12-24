@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Play } from 'lucide-react';
+import { Play, AlertCircle } from 'lucide-react';
 import Image from 'next/image';
 
 interface VideoTab {
@@ -23,6 +23,7 @@ interface VideoContent {
 const VideoSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState('dpdp');
   const [isPlaying, setIsPlaying] = useState(false);
+  const [comingSoonAlert, setComingSoonAlert] = useState(false);
 
   // Helper function to extract video ID from YouTube URL or return ID directly
   const extractVideoId = (urlOrId: string): string => {
@@ -57,6 +58,15 @@ const VideoSection: React.FC = () => {
   const handleTabChange = (id: string) => {
     setActiveTab(id);
     setIsPlaying(false);
+  };
+
+  const handlePlayClick = () => {
+    if (activeTab !== 'dpdp') {
+      setComingSoonAlert(true);
+      setTimeout(() => setComingSoonAlert(false), 3000);
+      return;
+    }
+    setIsPlaying(true);
   };
 
   const tabs: VideoTab[] = [
@@ -155,6 +165,16 @@ const VideoSection: React.FC = () => {
 
           {/* Right Column: Video Card */}
           <div className="relative w-full aspect-video rounded-lg overflow-hidden group shadow-lg bg-black">
+            {/* Alert Overlay */}
+            {comingSoonAlert && (
+              <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 animate-fadeIn">
+                <div className="bg-gold text-black px-4 py-2 rounded-full font-bold shadow-lg flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4" />
+                  <span>Coming Soon!</span>
+                </div>
+              </div>
+            )}
+
             {!isPlaying ? (
               <>
                 {/* Thumbnail: Video First Frame (Local) or Image (Remote) */}
@@ -182,7 +202,7 @@ const VideoSection: React.FC = () => {
                 {/* Play Button Center */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <button
-                    onClick={() => setIsPlaying(true)}
+                    onClick={handlePlayClick}
                     className="w-16 h-16 md:w-20 md:h-20 bg-slate-900/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 pl-1 group/btn cursor-pointer border-none z-20"
                     aria-label="Play video"
                   >

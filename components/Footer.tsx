@@ -2,8 +2,28 @@
 
 import React from 'react';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Footer: React.FC = () => {
+  const quickLinks = [
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: '/services' },
+    { label: 'Blogs', href: '/blogs' },
+    { label: 'Podcasts', href: '/podcasts' },
+    { label: 'About Us', href: '/about' },
+    { label: 'Contact Us', href: '/contact' },
+  ];
+
+  const services = [
+    { label: 'Cyber Forensics', href: '/services/cyber-forensics' },
+    { label: 'Forensic Audit', href: '/services/forensic-audit' },
+    { label: 'Corporate Investigations', href: '/services/corporate-investigations' },
+    { label: 'Background Verification', href: '/services/background-verification' },
+    { label: 'IPR Investigations', href: '/services/ipr-investigations' },
+    { label: 'Incident Response', href: '/services/incident-response' },
+  ];
+
   return (
     <footer className="w-full bg-white border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-4 md:px-12 lg:px-16 py-6 md:py-16">
@@ -11,21 +31,23 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-12 mb-4 md:mb-12">
           {/* Company Info */}
           <div className="col-span-2 md:col-span-1 space-y-2 md:space-y-4">
-            <div className="flex items-center mb-2 md:mb-4">
-              <img
+            <div className="flex items-center mb-2 md:mb-4 relative h-16 w-48">
+              <Image
                 src="/assets/images/logos/ficslogo.png"
                 alt="FICS Logo"
-                className="h-8 md:h-16 w-auto object-contain"
+                fill
+                className="object-contain object-left"
               />
             </div>
             <p className="text-xs md:text-base text-slate-600 leading-relaxed">
               FICS Pvt. Ltd. has pioneered in forensic investigations, offering comprehensive range of customized services to meet diverse client requirements.
             </p>
-            <div className="pt-2">
-              <img
+            <div className="pt-2 relative h-20 w-40">
+              <Image
                 src="/assets/images/logos/GeM-logo.png"
                 alt="GeM Logo"
-                className="h-16 md:h-20 w-auto object-contain"
+                fill
+                className="object-contain object-left"
               />
             </div>
           </div>
@@ -36,11 +58,11 @@ const Footer: React.FC = () => {
               Quick Links
             </h3>
             <ul className="space-y-1.5 md:space-y-3">
-              {['Home', 'Services', 'Gallery', 'Blogs', 'About Us', 'Contact Us'].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-slate-600 hover:text-slate-900 text-xs md:text-base transition-colors duration-300">
-                    {item}
-                  </a>
+              {quickLinks.map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className="text-slate-600 hover:text-slate-900 text-xs md:text-base transition-colors duration-300">
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -52,11 +74,11 @@ const Footer: React.FC = () => {
               Our Services
             </h3>
             <ul className="space-y-1.5 md:space-y-3">
-              {['Document Verification', 'Cyber Forensics', 'Background Verification', 'Forensic Audit', 'Fire Investigations'].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-slate-600 hover:text-slate-900 text-xs md:text-base transition-colors duration-300">
-                    {item}
-                  </a>
+              {services.map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className="text-slate-600 hover:text-slate-900 text-xs md:text-base transition-colors duration-300">
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -82,7 +104,7 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex items-center gap-2 md:gap-3">
                 <Mail className="w-4 h-4 md:w-5 md:h-5 text-slate-500 flex-shrink-0" />
-                <a href="mailto:info@forensicservicesindia.com" className="text-slate-600 hover:text-slate-900 text-xs md:text-base transition-colors duration-300 break-all">
+                <a href="mailto:info@forensicservicesindia.com" className="text-slate-600 hover:text-slate-900 text-xs md:text-base transition-colors duration-300">
                   info@forensicservicesindia.com
                 </a>
               </li>
