@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Play } from 'lucide-react';
+import Image from 'next/image';
 
 interface VideoTab {
   id: string;
@@ -74,7 +75,7 @@ const VideoSection: React.FC = () => {
       author: 'FICS Legal Team',
       role: 'Legal Experts',
       videoId: '/videos/Copy%20of%20IOTA%20AI_2.mp4',
-      thumbnail: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80'
+      thumbnail: '/assets/images/thumbnails/thumb-dpdp.jpg'
     },
     'corporate': {
       id: 'corporate',
@@ -84,7 +85,7 @@ const VideoSection: React.FC = () => {
       author: 'Priya Sharma',
       role: 'Director of Investigations',
       videoId: 'inWWhr5tnEA',
-      thumbnail: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80'
+      thumbnail: '/assets/images/thumbnails/thumb-corporate.jpg'
     },
     'fraud': {
       id: 'fraud',
@@ -94,7 +95,7 @@ const VideoSection: React.FC = () => {
       author: 'Amit Verma',
       role: 'Forensic Auditor',
       videoId: 'M9lK3zD73v8',
-      thumbnail: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80'
+      thumbnail: '/assets/images/thumbnails/thumb-fraud.jpg'
     },
     'legal': {
       id: 'legal',
@@ -104,7 +105,7 @@ const VideoSection: React.FC = () => {
       author: 'Sanjay Gupta',
       role: 'Senior Legal Consultant',
       videoId: 'xtnMQKpLgcc',
-      thumbnail: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1200&q=80'
+      thumbnail: '/assets/images/thumbnails/thumb-legal.jpg'
     },
   };
 
@@ -166,10 +167,12 @@ const VideoSection: React.FC = () => {
                     playsInline
                   />
                 ) : (
-                  <img
-                    src={activeContent.thumbnail}
+                  <Image
+                    src={activeContent.thumbnail!}
                     alt={activeContent.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 )}
 

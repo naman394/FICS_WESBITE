@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, User } from 'lucide-react';
 
 const Testimonials: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -24,19 +24,16 @@ const Testimonials: React.FC = () => {
       name: 'Anjali Parekh',
       title: '',
       quote: "Forensic services india has team of knowledgeable experts and professionals. Their comprehensive approach to cyber forensics investigations is impressive. Highly recommended for cyber forensics services.",
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80',
     },
     {
       name: 'Sumit Singh',
       title: '',
       quote: "Skilled and Professional Services in Cyber Forensics specially for Employee Background Verification For New Hires. The team conducted thorough background checks that helped us make informed hiring decisions.",
-      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80',
     },
     {
       name: 'Annie Khemani',
       title: '',
       quote: "Best detective agency in Delhi. Well done. High quality perfection & dedication delivered. I tried many other agencies but Forensic Services India has outdone them all. They are the best and operated with complete privacy.",
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80',
     },
   ];
 
@@ -97,14 +94,9 @@ const Testimonials: React.FC = () => {
                   }
                 >
                   <div className={`flex flex-col md:flex-row gap-0 md:gap-10 items-start md:items-end ${isMobile ? 'bg-white rounded-lg overflow-hidden shadow-sm' : ''}`}>
-                    {/* Image - Reduced height and width headshot with rounded corners */}
-                    <div className={`w-full md:w-[200px] h-[150px] md:h-[240px] flex-shrink-0 ${isMobile ? 'rounded-t-lg' : 'rounded-lg'} overflow-hidden`}>
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-full h-full object-cover"
-                        style={{ objectPosition: 'center 25%' }}
-                      />
+                    {/* SVG Profile Icon - Professional Placeholder */}
+                    <div className={`w-full md:w-[200px] h-[150px] md:h-[240px] flex-shrink-0 ${isMobile ? 'rounded-t-lg' : 'rounded-lg'} overflow-hidden bg-neutral-800 flex items-center justify-center border border-white/5`}>
+                      <User className="w-20 h-20 md:w-24 md:h-24 text-neutral-600 opacity-50" strokeWidth={1} />
                     </div>
 
                     {/* Content */}

@@ -61,10 +61,10 @@ const Contact: React.FC = () => {
                     Email us
                   </h3>
                   <a
-                    href="mailto:support@forensicservicesindia.com"
+                    href="mailto:info@forensicservicesindia.com"
                     className="text-sm md:text-base text-gray-300 hover:text-white transition-colors break-all block"
                   >
-                    support@forensicservicesindia.com
+                    info@forensicservicesindia.com
                   </a>
                 </div>
               </div>

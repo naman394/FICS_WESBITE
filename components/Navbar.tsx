@@ -35,8 +35,13 @@ const Navbar: React.FC = () => {
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },
     { href: '/blogs', label: 'Blogs' },
+    { href: '/podcasts', label: 'Podcasts' },
     { href: '/about', label: 'About Us' },
   ];
+
+  const handleEnquiryClick = () => {
+    window.open('https://wa.me/917292079270', '_blank');
+  };
 
   return (
     <>
@@ -46,7 +51,7 @@ const Navbar: React.FC = () => {
         {/* Logo Section */}
         <Link href="/" className="flex items-center">
           <img
-            src="https://forensicservicesindia.com/assets/images/ficslogo.png"
+            src="/assets/images/logos/ficslogo.png"
             alt="FICS Logo"
             className="h-20 md:h-28 w-auto object-contain"
           />
@@ -54,15 +59,21 @@ const Navbar: React.FC = () => {
 
         {/* Navigation Links - Desktop */}
         <nav className="hidden md:flex items-center gap-8 text-[15px] font-medium text-slate-600">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="hover:text-gold transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`transition-colors py-1 ${isActive
+                  ? 'text-gold border-b-2 border-gold'
+                  : 'text-slate-600 hover:text-gold'
+                  }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Action Buttons - Desktop */}
@@ -73,7 +84,10 @@ const Navbar: React.FC = () => {
           >
             Contact Us
           </Link>
-          <button className="px-5 py-2 bg-slate-900 text-white text-[15px] font-medium rounded-lg hover:bg-slate-800 transition-colors shadow-sm">
+          <button
+            onClick={handleEnquiryClick}
+            className="px-5 py-2 bg-slate-900 text-white text-[15px] font-medium rounded-lg hover:bg-slate-800 transition-colors shadow-sm"
+          >
             Send Enquiry
           </button>
         </div>
@@ -105,7 +119,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between p-6 border-b border-gray-100">
           <Link href="/" onClick={toggleMenu}>
             <img
-              src="https://forensicservicesindia.com/assets/images/ficslogo.png"
+              src="/assets/images/logos/ficslogo.png"
               alt="FICS Logo"
               className="h-16 w-auto object-contain"
             />
@@ -146,7 +160,10 @@ const Navbar: React.FC = () => {
           >
             Contact Us
           </Link>
-          <button className="w-full px-5 py-3 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition-colors">
+          <button
+            onClick={handleEnquiryClick}
+            className="w-full px-5 py-3 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition-colors"
+          >
             Send Enquiry
           </button>
         </div>

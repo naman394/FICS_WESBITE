@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
           <div className="col-span-2 md:col-span-1 space-y-2 md:space-y-4">
             <div className="flex items-center mb-2 md:mb-4">
               <img
-                src="https://forensicservicesindia.com/assets/images/ficslogo.png"
+                src="/assets/images/logos/ficslogo.png"
                 alt="FICS Logo"
                 className="h-8 md:h-16 w-auto object-contain"
               />
@@ -21,6 +21,13 @@ const Footer: React.FC = () => {
             <p className="text-xs md:text-base text-slate-600 leading-relaxed">
               FICS Pvt. Ltd. has pioneered in forensic investigations, offering comprehensive range of customized services to meet diverse client requirements.
             </p>
+            <div className="pt-2">
+              <img
+                src="/assets/images/logos/GeM-logo.png"
+                alt="GeM Logo"
+                className="h-16 md:h-20 w-auto object-contain"
+              />
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -64,13 +71,13 @@ const Footer: React.FC = () => {
               <li className="flex items-start gap-2 md:gap-3">
                 <MapPin className="w-4 h-4 md:w-5 md:h-5 text-slate-500 mt-0.5 flex-shrink-0" />
                 <span className="text-slate-600 text-xs md:text-base leading-relaxed">
-                  New Delhi, India
+                  Greater Noida
                 </span>
               </li>
               <li className="flex items-center gap-2 md:gap-3">
                 <Phone className="w-4 h-4 md:w-5 md:h-5 text-slate-500 flex-shrink-0" />
-                <a href="tel:+911234567890" className="text-slate-600 hover:text-slate-900 text-xs md:text-base transition-colors duration-300">
-                  +91 123 456 7890
+                <a href="tel:+917292079270" className="text-slate-600 hover:text-slate-900 text-xs md:text-base transition-colors duration-300">
+                  +91-7292079270
                 </a>
               </li>
               <li className="flex items-center gap-2 md:gap-3">

@@ -23,6 +23,18 @@ export default function BlogDetailPage() {
   // Split content into paragraphs for better rendering
   const contentParagraphs = blog.fullContent.split('\n\n').filter(p => p.trim());
 
+  // Helper to parse bold formatting
+  const renderContent = (text: string) => {
+    // Split by **text** pattern
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+    return parts.map((part, i) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={i} className="font-bold text-slate-900">{part.slice(2, -2)}</strong>;
+      }
+      return part;
+    });
+  };
+
   return (
     <div className="min-h-screen bg-[#FFFAF3]">
       <Navbar />
@@ -95,24 +107,32 @@ export default function BlogDetailPage() {
             {/* Render paragraphs manually for control */}
             {contentParagraphs.map((paragraph, index) => {
               if (paragraph.startsWith('## ')) {
-                return <h2 key={index} className="text-2xl md:text-3xl font-display font-semibold text-slate-900 mt-12 mb-6">{paragraph.replace('## ', '')}</h2>;
+                return (
+                  <h2 key={index} className="text-2xl md:text-3xl font-display font-semibold text-slate-900 mt-12 mb-6">
+                    {renderContent(paragraph.replace('## ', ''))}
+                  </h2>
+                );
               }
               if (paragraph.startsWith('### ')) {
-                return <h3 key={index} className="text-xl md:text-2xl font-display font-medium text-slate-900 mt-8 mb-4">{paragraph.replace('### ', '')}</h3>;
+                return (
+                  <h3 key={index} className="text-xl md:text-2xl font-display font-medium text-slate-900 mt-8 mb-4">
+                    {renderContent(paragraph.replace('### ', ''))}
+                  </h3>
+                );
               }
               if (paragraph.startsWith('- ') || paragraph.startsWith('* ')) {
                 const items = paragraph.split('\n').filter(item => item.trim());
                 return (
                   <ul key={index} className="list-disc list-outside ml-6 space-y-3 my-6 text-slate-700">
                     {items.map((item, itemIndex) => (
-                      <li key={itemIndex}>{item.replace(/^[-*]\s+/, '')}</li>
+                      <li key={itemIndex}>{renderContent(item.replace(/^[-*]\s+/, ''))}</li>
                     ))}
                   </ul>
                 );
               }
               return (
                 <p key={index} className="text-lg leading-8 text-slate-700 mb-8 font-light">
-                  {paragraph}
+                  {renderContent(paragraph)}
                 </p>
               );
             })}

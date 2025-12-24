@@ -11,11 +11,11 @@ const Hero: React.FC = () => {
 
   // Image banner data
   const imageUrls = useMemo(() => [
-    "/images/image1.png",
-    "/images/image2.png",
-    "/images/image3.png",
-    "/images/image4.png",
-    "/images/image5.png"
+    "/assets/images/hero/hero-1.jpg",
+    "/assets/images/hero/hero-2.jpg",
+    "/assets/images/hero/hero-3.jpg",
+    "/assets/images/hero/hero-4.jpg",
+    "/assets/images/hero/hero-5.jpg"
   ], []);
 
   const bannerCards = [
@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
 
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] leading-[1.05] font-display font-medium text-slate-900 mb-6 md:mb-8 max-w-4xl mx-auto">
-            {headlineLine1} {headlineLine2}
+            {headlineLine1} <span className="italic text-slate-800">{headlineLine2}</span>
             <br />
             and <span className="italic text-slate-800">Consultancy</span> Services
           </h1>

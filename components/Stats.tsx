@@ -205,10 +205,10 @@ const Stats: React.FC = () => {
   ];
 
   const cardImages = [
-    'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80',
-    'https://images.unsplash.com/photo-1572021335469-31706a17aaef?auto=format&fit=crop&w=800&q=80',
-    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
-    'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=80',
+    '/assets/images/stats/stat-1.jpg',
+    '/assets/images/stats/stat-2.jpg',
+    '/assets/images/stats/stat-3.jpg',
+    '/assets/images/stats/stat-4.jpg',
   ];
 
   // Calculate exact width needed for 4 cards

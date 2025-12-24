@@ -4,15 +4,33 @@ import React from 'react';
 
 const Clients: React.FC = () => {
   const clientLogos = [
-    "https://forensicservicesindia.com/assets/clients/rajasthan-madhura-gramin-bank.png",
-    "https://forensicservicesindia.com/assets/clients/baroda-rajasthan-kshetriya-gramin-bank.png",
-    "https://forensicservicesindia.com/assets/clients/ministry-of-home-affairs.png",
-    "https://forensicservicesindia.com/assets/clients/tcl.png",
-    "https://forensicservicesindia.com/assets/clients/pwc.png",
-    "https://forensicservicesindia.com/assets/clients/NIDEC.png",
-    "https://forensicservicesindia.com/assets/clients/gopaljee-ananda.png",
-    "https://forensicservicesindia.com/assets/clients/ANYA-gurgaon.png",
-    "https://forensicservicesindia.com/assets/clients/noida-development-authority.png"
+    "/assets/images/clients/baroda-rajasthan-kshetriya-gramin-bank.png",
+    "/assets/images/clients/shree-venkateshwara-college.png",
+    "/assets/images/clients/madhya-bihar-gramin-bank.png",
+    "/assets/images/clients/ministry-of-home-affairs.png",
+    "/assets/images/clients/broadridge.png",
+    "/assets/images/clients/Bharti-Reality.png",
+    "/assets/images/clients/tcl.png",
+    "/assets/images/clients/lrn-corporation.png",
+    "/assets/images/clients/NIDEC.png",
+    "/assets/images/clients/gopaljee-ananda.png",
+    "/assets/images/clients/saptrishi-consultancy-services-ltd.png",
+    "/assets/images/clients/pace-digitek-infra-private-limited.png",
+    "/assets/images/clients/KRBL-limited.png",
+    "/assets/images/clients/pramanit-karya-india-pvt-ltd.png",
+    "/assets/images/clients/ANYA-gurgaon.png",
+    "/assets/images/clients/V-Leader.png",
+    "/assets/images/clients/avengers-management-services-pvt-ltd.png",
+    "/assets/images/clients/Salwan-Public-School.png",
+    "/assets/images/clients/step-by-step-school.png",
+    "/assets/images/clients/noida-development-authority.png",
+    "/assets/images/clients/university-of-delhi.png",
+    "/assets/images/clients/GIS-Consulting.png",
+    "/assets/images/clients/Oriental-Bank-Of-Commerce.png",
+    "/assets/images/clients/National-Crime-Records-Bureau-Logo.png",
+    "/assets/images/clients/NBCC.png",
+    "/assets/images/clients/BPSC-Top.png",
+    "/assets/images/clients/db-gramin-bank.png"
   ];
 
   // Duplicate logos for seamless loop

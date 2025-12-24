@@ -83,32 +83,27 @@ const AboutPage: React.FC = () => {
                   setVideoError(true);
                 }}
               >
-                {/* Using direct Pexels video URL */}
-                <source src="https://videos.pexels.com/video-files/6125525/6125525-hd_1920_1080_30fps.mp4" type="video/mp4" />
-                {/* Alternative Pexels video URL */}
-                <source src="https://player.vimeo.com/external/6125525.sd.mp4?s=8e8741dbee251d8c35f99d6aaf83f6ee" type="video/mp4" />
-                {/* Fallback to local file if direct URL doesn't work */}
-                <source src="/videos/pexels-video-6125525.mp4" type="video/mp4" />
+                <source src="/assets/videos/about-hero.mp4" type="video/mp4" />
               </video>
             </div>
           )}
-          
+
           {/* Fallback background image - shows if video fails to load */}
-          <div 
+          <div
             className={`absolute inset-0 w-full h-full bg-cover bg-center ${videoError ? '' : 'opacity-0'}`}
             style={{
-              backgroundImage: 'url(https://images.pexels.com/videos/6125525/pexels-photo-6125525.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=1920)',
+              backgroundImage: 'url(/assets/images/about/hero-poster.jpg)',
               zIndex: 0,
             }}
           ></div>
-          
+
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/70" style={{ zIndex: 1 }}></div>
-          
+
           {/* Content Overlay */}
           <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 2 }}>
             <div className="text-center px-6 max-w-4xl mx-auto">
-              <h2 
+              <h2
                 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 md:mb-8"
                 style={{
                   fontFamily: 'Georgia, "Times New Roman", serif',
@@ -131,27 +126,128 @@ const AboutPage: React.FC = () => {
         </section>
 
         {/* Content Sections - Cream Background with rounded corners */}
-        <div className="w-full px-6 pt-8 pb-8 md:px-12 lg:px-16 md:pt-10 md:pb-20 bg-[#FFFAF3] rounded-t-3xl md:rounded-t-[3rem] rounded-b-3xl md:rounded-b-[3rem] -mt-8 md:-mt-12 lg:-mt-16 relative z-10">
-          <div 
-            ref={sectionRef}
-            className="max-w-4xl mx-auto py-16 md:py-24 text-center"
-          >
-            <h2 
-              className="text-4xl md:text-6xl lg:text-7xl font-display font-normal text-black mb-6"
-              style={{
-                fontFamily: 'Georgia, "Times New Roman", serif',
-                fontStyle: 'normal',
-                fontWeight: 400,
-              }}
-            >
-              Coming Soon
-            </h2>
-            <p className="text-xl md:text-2xl text-gray-700 mb-4">
-              Under Development
-            </p>
-            <p className="text-base md:text-lg text-gray-600">
-              This page is currently being developed. Please check back soon.
-            </p>
+        <div className="w-full px-6 pt-16 pb-16 md:px-12 lg:px-16 md:pt-24 md:pb-24 bg-[#FFFAF3] rounded-t-3xl md:rounded-t-[3rem] -mt-8 md:-mt-12 lg:-mt-16 relative z-10">
+          <div className="max-w-7xl mx-auto space-y-24 md:space-y-32">
+
+            {/* ISO Certified Intro */}
+            <div className="text-center max-w-4xl mx-auto">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 text-gold text-xs font-bold uppercase tracking-wider mb-6">
+                <span>ISO 9001:2015 Certified</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-display text-slate-900 mb-8 leading-tight">
+                Setting the Standard in <br /><span className="italic text-gold">Forensic Excellence</span>
+              </h2>
+              <p className="text-lg md:text-xl text-slate-600 leading-relaxed">
+                FICS Pvt. Ltd. stands as a beacon of trust and precision in the world of forensic investigations. As an ISO 9001:2015 certified agency, we strictly adhere to global quality standards, ensuring that every investigation is conducted with absolute methodological integrity, traceability, and accountability. Our certification is not just a badge; it is our promise of delivering evidence that stands the test of scrutiny.
+              </p>
+            </div>
+
+            {/* Who We Are */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
+              <div>
+                <h3 className="text-sm font-bold tracking-[0.2em] uppercase text-slate-400 mb-4">
+                  WHO WE ARE
+                </h3>
+                <h2 className="text-3xl md:text-5xl font-display text-slate-900 mb-6">
+                  Pioneers of Digital <br /> & Legal Truth.
+                </h2>
+                <div className="space-y-6 text-slate-600 text-base md:text-lg leading-relaxed">
+                  <p>
+                    Forensic Investigations and Consultancy Services (FICS) was founded with a singular vision: to bridge the gap between complex digital evidence and legal resolution. We are a collective of seasoned forensic experts, cybercrime investigators, legal consultants, and ethical hackers united by a passion for truth.
+                  </p>
+                  <p>
+                    From corporate fraud to sophisticated cyber-attacks, we provide the clarity needed to navigate crises. We don&apos;t just analyze data; we reconstruct narratives, identify perpetrators, and secure the evidence required for successful litigation or internal resolution.
+                  </p>
+                </div>
+              </div>
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-200 shadow-2xl">
+                <img
+                  src="/assets/images/about/team-meeting.jpg"
+                  alt="FICS Team meeting"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 text-white max-w-xs">
+                  <p className="font-display text-2xl italic">&quot;Truth lies in the details.&quot;</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Why FICS */}
+            <div>
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <h3 className="text-sm font-bold tracking-[0.2em] uppercase text-slate-400 mb-4">
+                  WHY CHOOSE FICS
+                </h3>
+                <h2 className="text-3xl md:text-5xl font-display text-slate-900">
+                  Reliability in <span className="text-gold italic">Critical Moments</span>
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                  {
+                    title: "Unmatched Expertise",
+                    desc: "Our team comprises veterans from law enforcement, innovative tech minds, and legal scholars who bring decades of combined experience to every case."
+                  },
+                  {
+                    title: "Cutting-Edge Tech",
+                    desc: "We leverage state-of-the-art forensic hardware and AI-driven analytical software to uncover evidence that others miss, ensuring comprehensive results."
+                  },
+                  {
+                    title: "Absolute Confidentiality",
+                    desc: "We understand the sensitivity of your data. Our protocols ensure strict non-disclosure, secure data handling, and complete privacy throughout the investigation."
+                  },
+                  {
+                    title: "Legal Admissibility",
+                    desc: "Every piece of evidence we extract is handled with a strict Chain of Custody, ensuring it is fully admissible in courts of law under Section 65B of the Indian Evidence Act."
+                  },
+                  {
+                    title: "Rapid Response",
+                    desc: "Cyber incidents require immediate action. Our rapid response team is available 24/7 to contain breaches, preserve volatile evidence, and mitigate damage."
+                  },
+                  {
+                    title: "Tailored Solutions",
+                    desc: "We recognize that no two cases are alike. We customize our investigative approach to align with your specific organizational goals and legal requirements."
+                  }
+                ].map((item, idx) => (
+                  <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:border-gold/30 transition-all duration-300 group">
+                    <div className="w-12 h-1 bg-gold mb-6 group-hover:w-20 transition-all"></div>
+                    <h3 className="text-xl font-display font-semibold text-slate-900 mb-4">{item.title}</h3>
+                    <p className="text-slate-600 leading-relaxed text-sm">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Our Commitment */}
+            <div className="bg-slate-900 rounded-3xl p-8 md:p-16 text-white overflow-hidden relative">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                  <h3 className="text-sm font-bold tracking-[0.2em] uppercase text-gold/80 mb-6">
+                    OUR COMMITMENT
+                  </h3>
+                  <h2 className="text-3xl md:text-5xl font-display mb-8 leading-tight">
+                    Integrity is our <br />Core Algorithm.
+                  </h2>
+                  <p className="text-slate-300 text-lg leading-relaxed mb-8">
+                    At FICS, we commit to more than just solving cases; we commit to restoring peace of mind. We pledge to operate with the highest ethical standards, providing unbiased, factual findings upon which you can base critical decisions. Your trust is our most valuable asset, and we strive to protect it with every engagement.
+                  </p>
+                  <Link href="/contact" className="inline-block px-8 py-4 bg-gold text-slate-900 font-bold rounded-lg hover:bg-white transition-colors">
+                    Partner With Us
+                  </Link>
+                </div>
+                <div className="relative">
+                  <img
+                    src="/assets/images/about/handshake.jpg"
+                    alt="Handshake"
+                    className="rounded-xl shadow-2xl opacity-80 mix-blend-luminosity hover:mix-blend-normal transition-all duration-500"
+                  />
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </main>
@@ -161,4 +257,3 @@ const AboutPage: React.FC = () => {
 };
 
 export default AboutPage;
-
