@@ -233,7 +233,7 @@ export const servicesData: ServiceDetail[] = [
     title: 'Cyber Crime Incident Response',
     shortDescription: 'Rapid action and resolution for cyber incidents using DFIR IRIS system.',
     fullDescription: 'Our incident response services ensure rapid action and resolution for cyber incidents. We utilize our DFIR IRIS system for efficient case management, task delegation, and alert analysis, providing a structured and effective response to mitigate damage and protect your assets.',
-    image: '/assets/images/services/incident-response.jpg',
+    image: '/assets/images/services/incident-response-v3.jpg',
     icon: RefreshCw,
     features: [
       'Internal Breaches',

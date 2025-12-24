@@ -34,28 +34,28 @@ const Services: React.FC = () => {
       {
         title: 'Cyber Forensics',
         description: 'Our cyber forensic services help uncover critical digital evidence and include forensic examination of laptops, mobile forensic investigations, email forensics, data recovery, network forensics, and collection of digital evidence from crime scenes.',
-        image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80',
+        image: '/assets/images/services/cyber-forensics.jpg',
         icon: Shield,
         slug: 'cyber-forensics'
       },
       {
         title: 'Document Verification',
         description: 'Our Document Examination and Verification services help authenticate and validate critical records. We use advanced forensic techniques to identify alterations, confirm authenticity, and provide expert reports.',
-        image: 'https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?auto=format&fit=crop&w=800&q=80',
+        image: '/assets/images/services/document-examination.jpg',
         icon: FileCheck,
         slug: 'document-examination-verification'
       },
       {
         title: 'Fingerprint Examination',
         description: 'Our Fingerprint Examination services help identify individuals and link evidence to crime scenes. Services include latent fingerprint detection, database matching, and expert testimony.',
-        image: 'https://images.unsplash.com/photo-1586769852044-692d6e3703f0?auto=format&fit=crop&w=800&q=80',
+        image: '/assets/images/services/fingerprint-examination.jpg',
         icon: Fingerprint,
         slug: 'fingerprint-examination'
       },
       {
         title: 'Expert Testimony',
         description: 'We provide expert testimony services in court for various forensic investigations. Our forensic experts support clients during litigation by ensuring that forensic findings are accurately interpreted and presented.',
-        image: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=800&q=80',
+        image: '/assets/images/services/expert-testimony.jpg',
         icon: Scale,
         slug: 'expert-testimony-legal-support'
       },
@@ -64,35 +64,35 @@ const Services: React.FC = () => {
       {
         title: 'IPR Investigations',
         description: 'We view intellectual property as a strategic asset. Our IPR Investigation Services address challenges related to infringement, misuse, and unauthorized exploitation of IP assets.',
-        image: 'https://images.unsplash.com/photo-1553484771-371a605b060b?auto=format&fit=crop&w=800&q=80',
+        image: '/assets/images/services/ipr-investigations.jpg',
         icon: Copyright,
         slug: 'ipr-investigations'
       },
       {
         title: 'Corporate Investigations',
         description: 'Our corporate investigations focus on identifying and addressing misconduct within businesses, including internal and external fraud, corporate espionage, and intellectual property protection.',
-        image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80',
+        image: '/assets/images/services/corporate-investigations.jpg',
         icon: Building2,
         slug: 'corporate-investigations'
       },
       {
         title: 'Forensic Audit',
         description: 'Our forensic audit services uncover financial fraud and ensure compliance. We investigate discrepancies in accounting records, trace illicit financial activities, and ensure accurate reporting.',
-        image: 'https://images.unsplash.com/photo-1554224155-220d5d1c6a36?auto=format&fit=crop&w=800&q=80',
+        image: '/assets/images/services/forensic-audit.jpg',
         icon: FileSearch,
         slug: 'forensic-audit'
       },
       {
         title: 'Background Verification',
         description: 'We offer comprehensive background verification services to mitigate risks in recruitment and partnerships, including educational checks, address verification, and criminal record checks.',
-        image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80',
+        image: '/assets/images/services/background-verification.jpg',
         icon: UserCheck,
         slug: 'background-verification'
       },
       {
         title: 'Due Diligence',
         description: 'Our due diligence investigations help clients make informed decisions by thoroughly evaluating financial, legal, and reputational risks through detailed investigations.',
-        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+        image: '/assets/images/services/due-diligence.jpg',
         icon: Search,
         slug: 'due-diligence-investigations'
       },
@@ -101,21 +101,21 @@ const Services: React.FC = () => {
       {
         title: 'Cyber Crime Investigation',
         description: 'We provide specialized investigations for cyber-related offenses, including social media investigations, ransomware, financial fraud, and online defamation.',
-        image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80',
+        image: '/assets/images/services/cyber-crime.jpg',
         icon: AlertTriangle,
         slug: 'cyber-crime-investigation'
       },
       {
         title: 'Incident Response (DFIR)',
         description: 'Our incident response services ensure rapid action and resolution for cyber incidents. We utilize our DFIR IRIS system for efficient case management and threat mitigation.',
-        image: 'https://images.unsplash.com/photo-1563206767-5b1d97299337?auto=format&fit=crop&w=800&q=80',
+        image: '/assets/images/services/incident-response-v3.jpg',
         icon: RefreshCw,
         slug: 'incident-response'
       },
       {
         title: 'Cybersecurity Services',
         description: 'Our cybersecurity services protect businesses from potential threats includes VAPT, Red Team Testing, Blue teaming, and Security Risk Assessment.',
-        image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80',
+        image: '/assets/images/services/cybersecurity.jpg',
         icon: Lock,
         slug: 'cybersecurity-services'
       },
@@ -124,7 +124,7 @@ const Services: React.FC = () => {
       {
         title: 'Forensic & Cyber Workshops',
         description: 'We conduct workshops to educate students, teachers, and caregivers about global cyber scams and the POCSO Act 2012, empowering them to recognize and prevent cyber threats.',
-        image: 'https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&w=800&q=80',
+        image: '/assets/images/services/workshops.jpg',
         icon: GraduationCap,
         slug: 'workshops'
       },
