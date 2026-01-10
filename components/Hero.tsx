@@ -98,29 +98,29 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Main Content Container */}
-      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-7xl px-4 md:px-6 text-center pt-28 md:pt-32">
+      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-7xl px-4 md:px-6 text-center pt-24 md:pt-32">
 
         {/* Brand Badge - Understated Luxury */}
-        <div className="mb-8 md:mb-12 opacity-0 animate-[fadeIn_1s_ease-out_0.5s_forwards]">
+        <div className="mb-6 md:mb-12 opacity-0 animate-[fadeIn_1s_ease-out_0.5s_forwards]">
           <span className="inline-block py-1.5 px-5 md:px-6 border-y border-gold/40 text-[10px] md:text-xs font-serif font-medium tracking-[0.3em] md:tracking-[0.4em] uppercase text-gold-light/90">
             {subLabel}
           </span>
         </div>
 
         {/* Headline - Unified Company Name */}
-        <h1 className="flex flex-col items-center justify-center text-center text-white mb-8 md:mb-10 w-full drop-shadow-2xl">
-          <div className="flex flex-col items-center leading-[1.1] md:leading-[1.0] tracking-tight font-display font-medium text-slate-100">
-            <span className="block text-[2.6rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] opacity-0 animate-[slideUpFade_1s_ease-out_0.7s_forwards]">
+        <h1 className="flex flex-col items-center justify-center text-center text-white mb-6 md:mb-10 w-full drop-shadow-2xl">
+          <div className="flex flex-col items-center leading-[1.05] md:leading-[1.0] tracking-tight font-display font-medium text-slate-100">
+            <span className="block text-[2.8rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] opacity-0 animate-[slideUpFade_1s_ease-out_0.7s_forwards]">
               Forensic <span className="text-[#dcc07e]">Investigations</span>
             </span>
-            <span className="block text-[2.6rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] opacity-0 animate-[slideUpFade_1s_ease-out_0.8s_forwards]">
+            <span className="block text-[2.8rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] opacity-0 animate-[slideUpFade_1s_ease-out_0.8s_forwards]">
               & <span className="text-[#dcc07e]">Consultancy</span> Services
             </span>
           </div>
         </h1>
 
         {/* Description - Perfectly Centered & Balanced */}
-        <p className="text-neutral-300 text-base md:text-xl leading-relaxed font-light max-w-3xl mx-auto mb-14 text-center text-balance opacity-0 animate-[fadeIn_1s_ease-out_1.1s_forwards]">
+        <p className="text-neutral-300 text-lg md:text-xl leading-relaxed font-light max-w-3xl mx-auto mb-10 md:mb-14 text-center text-balance opacity-0 animate-[fadeIn_1s_ease-out_1.1s_forwards] px-2">
           Pioneering forensic investigations with comprehensive, customized services deployed by our expert team.
         </p>
 
