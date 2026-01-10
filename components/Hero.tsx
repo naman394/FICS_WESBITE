@@ -13,36 +13,34 @@ const Hero: React.FC = () => {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const videoSources = [
-    "/assets/videos/hero-bg-cycle-1.mp4",
     "/assets/videos/hero-bg-cycle-2.mp4",
     "/assets/videos/hero-bg-cycle-3.mp4",
     "/assets/videos/hero-bg-cycle-4.mp4"
   ];
 
   // Handle video rotation: Max 7s OR when video ends (if shorter)
-  const isFirstMount = useRef(true);
+  const previousIndexRef = useRef(currentVideoIndex);
 
   useEffect(() => {
     const activeVideo = videoRefs.current[currentVideoIndex];
     if (!activeVideo) return;
 
-    // Playback logic
-    if (isFirstMount.current) {
-      // On first load, don't reset time to avoid jumping/glitching if autoplay started
-      isFirstMount.current = false;
-      // Ensure it's playing in case autoplay failed (e.g. low power mode)
-      const playPromise = activeVideo.play();
-      if (playPromise !== undefined) playPromise.catch(() => { });
-    } else {
-      // For subsequent videos, reset to start
+    // Logic to handle playback and resetting time
+    // We only reset currentTime if the index has effectively changed (i.e. strictly a new video)
+    // This prevents resetting the first video on double-invoked Effects (Strict Mode)
+    if (currentVideoIndex !== previousIndexRef.current) {
       activeVideo.currentTime = 0;
-      const playPromise = activeVideo.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          console.log("Auto-play was prevented:", error);
-        });
-      }
     }
+
+    const playPromise = activeVideo.play();
+    if (playPromise !== undefined) {
+      playPromise.catch((error) => {
+        console.log("Auto-play was prevented:", error);
+      });
+    }
+
+    // Update ref for next comparison
+    previousIndexRef.current = currentVideoIndex;
 
     const handleNext = () => {
       setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videoSources.length);
@@ -51,7 +49,7 @@ const Hero: React.FC = () => {
     // 1. Transition after 5 seconds max
     const timeoutId = setTimeout(handleNext, 5000);
 
-    // 2. Transition immediately if video ends (for videos < 7s)
+    // 2. Transition immediately if video ends (for videos < 5s)
     activeVideo.addEventListener('ended', handleNext);
 
     return () => {
