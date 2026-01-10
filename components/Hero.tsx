@@ -22,22 +22,24 @@ const Hero: React.FC = () => {
   const previousIndexRef = useRef(currentVideoIndex);
 
   useEffect(() => {
-    const activeVideo = videoRefs.current[currentVideoIndex];
-    if (!activeVideo) return;
+    // Logic to handle playback: Play active, PAUSE all others to save resources
+    videoRefs.current.forEach((video, index) => {
+      if (!video) return;
 
-    // Logic to handle playback and resetting time
-    // We only reset currentTime if the index has effectively changed (i.e. strictly a new video)
-    // This prevents resetting the first video on double-invoked Effects (Strict Mode)
-    if (currentVideoIndex !== previousIndexRef.current) {
-      activeVideo.currentTime = 0;
-    }
-
-    const playPromise = activeVideo.play();
-    if (playPromise !== undefined) {
-      playPromise.catch((error) => {
-        console.log("Auto-play was prevented:", error);
-      });
-    }
+      if (index === currentVideoIndex) {
+        // Active Video
+        if (currentVideoIndex !== previousIndexRef.current) {
+          video.currentTime = 0;
+        }
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch((error) => console.log("Play interrupted:", error));
+        }
+      } else {
+        // Inactive Videos - Strict Pause
+        video.pause();
+      }
+    });
 
     // Update ref for next comparison
     previousIndexRef.current = currentVideoIndex;
@@ -46,15 +48,18 @@ const Hero: React.FC = () => {
       setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videoSources.length);
     };
 
-    // 1. Transition after 5 seconds max
+    // 1. Transition after 5 seconds max (controlled by JS)
     const timeoutId = setTimeout(handleNext, 5000);
 
-    // 2. Transition immediately if video ends (for videos < 5s)
-    activeVideo.addEventListener('ended', handleNext);
+    // 2. Transition immediately if active video ends
+    const activeVideo = videoRefs.current[currentVideoIndex];
+    if (activeVideo) {
+      activeVideo.addEventListener('ended', handleNext);
+    }
 
     return () => {
       clearTimeout(timeoutId);
-      activeVideo.removeEventListener('ended', handleNext);
+      if (activeVideo) activeVideo.removeEventListener('ended', handleNext);
     };
   }, [currentVideoIndex, videoSources.length]);
 
