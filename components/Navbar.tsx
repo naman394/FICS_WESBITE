@@ -189,7 +189,7 @@ const Navbar: React.FC = () => {
           ))}
         </nav>
 
-        {/* Action Buttons - Mobile */}
+        {/* Action Buttons - Mobile Menu */}
         <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-100 space-y-3 bg-white">
           <Link
             href="/contact"
@@ -198,15 +198,18 @@ const Navbar: React.FC = () => {
           >
             Contact Us
           </Link>
-          <button
-            onClick={handleEnquiryClick}
-            className="w-full flex items-center justify-center gap-2 px-5 py-3 bg-[#25D366] text-white font-medium rounded-lg hover:bg-[#20bd5a] transition-colors"
-          >
-            <WhatsAppIcon className="w-6 h-6 fill-white" />
-            <span>WhatsApp Us</span>
-          </button>
         </div>
       </div>
+
+      {/* Mobile Floating WhatsApp Button - Custom for Mobile View */}
+      <button
+        onClick={handleEnquiryClick}
+        className="fixed bottom-6 right-6 z-50 md:hidden group flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-[0_4px_12px_rgba(37,211,102,0.4)] hover:shadow-[0_6px_16px_rgba(37,211,102,0.6)] transition-all duration-300 active:scale-95 animate-pulse-fast"
+        aria-label="Contact on WhatsApp"
+      >
+        <span className="absolute inset-0 rounded-full border border-white/20 animate-ping opacity-20"></span>
+        <WhatsAppIcon className="w-8 h-8 fill-white relative z-10" />
+      </button>
     </>
   );
 };
