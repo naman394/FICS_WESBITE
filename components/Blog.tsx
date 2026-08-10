@@ -3,9 +3,13 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, Calendar, Tag, Search, Clock } from 'lucide-react';
-import { blogPosts } from '@/data/blogs';
+import type { BlogPost } from '@/lib/podgen';
 
-const Blog: React.FC = () => {
+interface BlogProps {
+  posts: BlogPost[];
+}
+
+const Blog: React.FC<BlogProps> = ({ posts: blogPosts }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredPosts = blogPosts.filter((post) =>

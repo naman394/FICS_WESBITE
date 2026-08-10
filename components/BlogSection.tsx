@@ -1,11 +1,17 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
-import { blogPosts } from '@/data/blogs';
+import { getBlogPosts, type BlogPost } from '@/lib/podgen';
 
 const BlogSection: React.FC = () => {
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+
+  useEffect(() => {
+    getBlogPosts().then(setBlogPosts);
+  }, []);
+
   // Get the first 4 posts (1 featured + 3 regular)
   const allPosts = blogPosts.slice(0, 4);
   const featuredPost = allPosts[0];

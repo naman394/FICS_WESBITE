@@ -1,39 +1,26 @@
-'use client';
-
 import React from 'react';
-import { useParams, notFound } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Tag, Clock, ArrowUpRight } from 'lucide-react';
-import { getBlogBySlug, getRelatedBlogs } from '@/data/blogs';
+import { getBlogBySlug, getRelatedBlogs } from '@/lib/podgen';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ImgWithFallback from '@/components/ImgWithFallback';
 
-export default function BlogDetailPage() {
-  const params = useParams();
-  const slug = params.slug as string;
+export const revalidate = 60;
 
-  const blog = getBlogBySlug(slug);
+interface BlogDetailPageProps {
+  params: { slug: string };
+}
+
+export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
+  const blog = await getBlogBySlug(params.slug);
 
   if (!blog) {
     notFound();
   }
 
-  const relatedBlogs = getRelatedBlogs(blog.id, 3);
-
-  // Split content into paragraphs for better rendering
-  const contentParagraphs = blog.fullContent.split('\n\n').filter(p => p.trim());
-
-  // Helper to parse bold formatting
-  const renderContent = (text: string) => {
-    // Split by **text** pattern
-    const parts = text.split(/(\*\*.*?\*\*)/g);
-    return parts.map((part, i) => {
-      if (part.startsWith('**') && part.endsWith('**')) {
-        return <strong key={i} className="font-bold text-slate-900">{part.slice(2, -2)}</strong>;
-      }
-      return part;
-    });
-  };
+  const relatedBlogs = await getRelatedBlogs(blog.slug, 3);
 
   return (
     <div className="min-h-screen bg-[#FFFAF3]">
@@ -91,52 +78,19 @@ export default function BlogDetailPage() {
         <div className="max-w-3xl mx-auto">
           {/* Featured Image - Wide & Aesthetic */}
           <div className="mb-12 md:mb-16 -mx-6 md:-mx-12 lg:-mx-20 rounded-xl overflow-hidden shadow-2xl">
-            <img
+            <ImgWithFallback
               src={blog.image}
               alt={blog.title}
               className="w-full h-auto object-cover max-h-[500px]"
-              onError={(e) => {
-                const target = e.currentTarget;
-                target.src = 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80';
-              }}
+              fallbackSrc="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80"
             />
           </div>
 
-          {/* Blog Text */}
-          <article className="prose prose-lg md:prose-xl prose-slate max-w-none mx-auto">
-            {/* Render paragraphs manually for control */}
-            {contentParagraphs.map((paragraph, index) => {
-              if (paragraph.startsWith('## ')) {
-                return (
-                  <h2 key={index} className="text-2xl md:text-3xl font-display font-semibold text-slate-900 mt-12 mb-6">
-                    {renderContent(paragraph.replace('## ', ''))}
-                  </h2>
-                );
-              }
-              if (paragraph.startsWith('### ')) {
-                return (
-                  <h3 key={index} className="text-xl md:text-2xl font-display font-medium text-slate-900 mt-8 mb-4">
-                    {renderContent(paragraph.replace('### ', ''))}
-                  </h3>
-                );
-              }
-              if (paragraph.startsWith('- ') || paragraph.startsWith('* ')) {
-                const items = paragraph.split('\n').filter(item => item.trim());
-                return (
-                  <ul key={index} className="list-disc list-outside ml-6 space-y-3 my-6 text-slate-700">
-                    {items.map((item, itemIndex) => (
-                      <li key={itemIndex}>{renderContent(item.replace(/^[-*]\s+/, ''))}</li>
-                    ))}
-                  </ul>
-                );
-              }
-              return (
-                <p key={index} className="text-lg leading-8 text-slate-700 mb-8 font-light">
-                  {renderContent(paragraph)}
-                </p>
-              );
-            })}
-          </article>
+          {/* Blog Text — fullContent is already rendered HTML from Podgen */}
+          <article
+            className="prose prose-lg md:prose-xl prose-slate max-w-none mx-auto"
+            dangerouslySetInnerHTML={{ __html: blog.fullContent }}
+          />
 
           {/* Divider */}
           <div className="border-t border-slate-200 my-16"></div>
@@ -153,19 +107,16 @@ export default function BlogDetailPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {relatedBlogs.map((relatedBlog) => (
                 <Link
-                  key={relatedBlog.id}
+                  key={relatedBlog.slug}
                   href={`/blogs/${relatedBlog.slug}`}
                   className="group block"
                 >
                   <div className="overflow-hidden rounded-lg mb-4 shadow-sm group-hover:shadow-md transition-shadow">
-                    <img
+                    <ImgWithFallback
                       src={relatedBlog.image}
                       alt={relatedBlog.title}
                       className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
-                      onError={(e) => {
-                        const target = e.currentTarget;
-                        target.src = 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=400&q=80';
-                      }}
+                      fallbackSrc="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=400&q=80"
                     />
                   </div>
                   <div className="mb-2">
@@ -189,4 +140,3 @@ export default function BlogDetailPage() {
     </div>
   );
 }
-

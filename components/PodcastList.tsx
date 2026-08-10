@@ -3,9 +3,13 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Search, Calendar, Clock, Mic, Play } from 'lucide-react';
-import { podcasts } from '@/data/podcasts';
+import type { Podcast } from '@/lib/podgen';
 
-const PodcastList: React.FC = () => {
+interface PodcastListProps {
+  podcasts: Podcast[];
+}
+
+const PodcastList: React.FC<PodcastListProps> = ({ podcasts }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredPodcasts = podcasts.filter((podcast) =>
